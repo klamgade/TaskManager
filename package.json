@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,6 +14,7 @@
   "author": "kamal lamgade",
   "license": "ISC",
   "dependencies": {
+    "amqplib": "^0.8.0",
     "chalk": "^4.1.2",
     "debug": "^2.6.9",
     "express": "^4.17.1",
