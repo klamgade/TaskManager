@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
+const logger = require('./src/utils/logger');
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '/public/')));
@@ -14,5 +15,5 @@ app.get('/', (req, res) => {
 
 const port = 3000;
 app.listen(port, () => {
-    debug(`Server started on port ${chalk.green(port)}`);
+    logger.info(`Server started on port port ${port}`);
 });
