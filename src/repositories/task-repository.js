@@ -7,8 +7,9 @@ class TaskRepository {
     }
 
     async paged(filter, sortBy, page, perPage) {
+        logger.info(`navigating to paged to get all tasks`);
         let results = [];
-            results = getTasksJSON; 
+            results =  getTasksJSON; 
         return results;
     }
 }

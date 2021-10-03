@@ -1,5 +1,6 @@
 const TaskRepository = require('../../repositories/task-repository');
 const logger = require('../../utils/logger');
+const getTasksJSON = require('../../../tasks.json')
 
 class TaskHandlers {
     constructor(logger) {
@@ -11,15 +12,11 @@ class TaskHandlers {
         try {
             const { direction = 'asc', sort = 'name', page = 0, perPage = 50 } = req.query;
             let filter = {};
-            const result = await this.taskRepository.paged(filter, page, perPage);
+            logger.info(`accessing to task repository`);
+            let result = getTasksJSON;
             res.status(200);
             res.json({
-                    data: result.items,
-                    metadata: {
-                        page: Number(page),
-                        perPage: Number(perPage),
-                        total: result.total
-                    }
+                    data: result
                 }); 
         } catch (error) {
             logger.info('error', error)
