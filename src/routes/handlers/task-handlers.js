@@ -13,10 +13,15 @@ class TaskHandlers {
             const { direction = 'asc', sort = 'name', page = 0, perPage = 50 } = req.query;
             let filter = {};
             logger.info(`accessing to task repository`);
-            let result = getTasksJSON;
+            let result = await this.taskRepository.paged(filter, page, perPage);
             res.status(200);
             res.json({
-                    data: result
+                    data: result.items,
+                    metadata: {
+                        page: Number(page),
+                        perPage: Number(perPage),
+                        total: result.total
+                    }
                 }); 
         } catch (error) {
             logger.info('error', error)

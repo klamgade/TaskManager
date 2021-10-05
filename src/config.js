@@ -31,6 +31,37 @@ let config = convict({
 		default: 3000,
 		env: 'PORT',
 		arg: 'port'
+	},
+	db: {
+		name: {
+			doc: 'database name',
+			format: '*',
+			default: 'task'
+		},
+		uri: {
+			doc: 'database uri',
+			format: '*',
+			default: 'mongodb:27017',
+			env: 'DB_URI'
+		},
+		username: {
+			doc: 'username for database',
+			format: '*',
+			default: null,
+			env: 'DB_USER'
+		},
+		pass: {
+			doc: 'password for database',
+			format: '*',
+			default: null,
+			env: 'DB_PASS'
+		},
+		opts: {
+			doc: 'Additional options for mongodb connection',
+			format: '*',
+			default: 'null',
+			env: 'DB_OPTS'
+		}
 	}
 });
 
