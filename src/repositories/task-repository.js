@@ -25,6 +25,11 @@ class TaskRepository {
             items: results
         }
     }
+
+    async create(doc) {
+        return await Task.create(doc);
+    }
+
 }
 
 

@@ -8,6 +8,8 @@ const morgan = require('morgan');
 const path = require('path');
 const logger = require('./src/utils/logger');
 const http = require('http');
+app.use(express.urlencoded({extended: true}));
+app.use(express.json()) // To parse the incoming requests with JSON payloads
 
 //middleware
 app.use(morgan('dev')); 

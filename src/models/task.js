@@ -1,6 +1,7 @@
 const  mongoose  = require('mongoose');
 const Schema = mongoose.Schema;
 const uuid = require('uuid');
+const { TaskStatus } = require('../constants');
 
 const taskSchema = new Schema({
     _id: {
@@ -14,6 +15,11 @@ const taskSchema = new Schema({
     },
     description: {
         type: String
+    },
+    status: {
+        type: String,
+        enum: [...Object.keys(TaskStatus)],
+        default: TaskStatus.TODO
     },
     createdBy: {
         type: String
