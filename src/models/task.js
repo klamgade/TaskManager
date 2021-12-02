@@ -31,6 +31,9 @@ const taskSchema = new Schema({
     whenUpdated: {
         type: Date,
         default: Date.now
+    },
+    whenDeleted: {
+        type: Date
     }
 });
 

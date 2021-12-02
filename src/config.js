@@ -47,13 +47,13 @@ let config = convict({
 		username: {
 			doc: 'username for database',
 			format: '*',
-			default: null,
+			default: 'kamal-prakash',
 			env: 'DB_USER'
 		},
 		pass: {
 			doc: 'password for database',
 			format: '*',
-			default: null,
+			default: 'test123',
 			env: 'DB_PASS'
 		},
 		opts: {
