@@ -6,6 +6,8 @@ class TaskRepository {
     constructor(logger) {
         this.log = logger;
         this.paged = this.paged.bind(this);
+        this.get = this.get.bind(this);
+        this.delete = this.delete.bind(this);
     }
 
     async paged(filter, sortBy, page = 0, perPage = 50) {
@@ -28,6 +30,14 @@ class TaskRepository {
 
     async create(doc) {
         return await Task.create(doc);
+    }
+
+    async delete(id) {
+        return await Task.findByIdAndUpdate(id, { whenDeleted: Date.now() }).exec();
+    }
+
+    async get(identifier) {
+        return await Task.findOne({ $or: [{ _id: identifier }] }).exec();
     }
 
 }

@@ -8,4 +8,5 @@ module.exports = (app, log) => {
     //integrate and add swagger docs
     app.get(`${API_ROOT}`, handlers.getTasks);
     app.post(`${API_ROOT}`, handlers.createTask);
+    app.post(`${API_ROOT}/:id`, handlers.deleteTask);
 }
