@@ -8,6 +8,7 @@ class TaskRepository {
         this.paged = this.paged.bind(this);
         this.get = this.get.bind(this);
         this.delete = this.delete.bind(this);
+        this.update = this.update.bind(this);
     }
 
     async paged(filter, sortBy, page = 0, perPage = 50) {
@@ -38,6 +39,14 @@ class TaskRepository {
 
     async get(identifier) {
         return await Task.findOne({ $or: [{ _id: identifier }] }).exec();
+    }
+
+    async update(id, doc) {
+        doc.whenUpdated = Date.now();
+        if(doc._id) {
+            delete doc._id;
+        }
+        return await Task.findByIdAndUpdate(id, doc, { new: true }).exec();
     }
 
 }

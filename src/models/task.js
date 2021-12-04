@@ -9,20 +9,14 @@ const taskSchema = new Schema({
         required: true,
         default: uuid.v4
     },
-    title : {
-        type: String,
-        required: true
-    },
     description: {
-        type: String
+        type: String,
+        required: true,
     },
     status: {
         type: String,
         enum: [...Object.keys(TaskStatus)],
         default: TaskStatus.TODO
-    },
-    createdBy: {
-        type: String
     },
     whenCreated: {
         type: Date,

@@ -9,4 +9,5 @@ module.exports = (app, log) => {
     app.get(`${API_ROOT}`, handlers.getTasks);
     app.post(`${API_ROOT}`, handlers.createTask);
     app.post(`${API_ROOT}/:id`, handlers.deleteTask);
+    app.put(`${API_ROOT}/:id`, handlers.updateTask);
 }

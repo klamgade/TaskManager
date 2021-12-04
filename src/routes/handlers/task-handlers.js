@@ -10,6 +10,7 @@ class TaskHandlers extends ApiHandler {
         this.getTasks = this.getTasks.bind(this);
         this.createTask = this.createTask.bind(this);
         this.deleteTask = this.deleteTask.bind(this);
+        this.updateTask = this.updateTask.bind(this);
     }
 
     async getTasks(req, res) {
@@ -44,6 +45,25 @@ class TaskHandlers extends ApiHandler {
             } else {
                 res.status(400);
                 res.json({ data: null });
+            }
+        } catch (err) {
+            this.handleError(err, res);
+        }
+    }
+
+    async updateTask(req, res) {
+        const { id } = req.params;
+        const doc = req.body;
+
+        try {
+            let task = await this.taskRepository.get(id);
+            if(!task) {
+                res.status(404);
+                res.json({ data: null });
+            } else {
+                const result = await this.taskRepository.update(task._id, doc);
+                res.status(200);
+                res.json({ data: result });
             }
         } catch (err) {
             this.handleError(err, res);
