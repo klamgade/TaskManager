@@ -21,7 +21,7 @@ tasksRoutes(app, logger);
 //database 
 const dbPromise = require('./src/models/db')(config.get('db'));
 
-const port = 3000;
+const port = 3001;
 const server = http.createServer(app);
 dbPromise.then(() => {
     server.listen(port, () => {
